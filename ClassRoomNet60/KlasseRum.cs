@@ -8,10 +8,12 @@ namespace ClassRoomNet60
 {
     public class KlasseRum
     {
+        //Properties
         public string KlasseNavn { get; set; }
         public List<Studerende> KlasseListe { get; set; }
         public DateTime SemesterStart { get; set; }
 
+        //Constructor
         public KlasseRum()
         {
             KlasseNavn = "Unknown";

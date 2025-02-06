@@ -8,19 +8,27 @@ namespace ClassRoomNet60
 {
     public class Studerende
     {
+        //
         public string Navn { get; set; }
         public int Fødselsmåned { get; set; }
         public int Fødselsdag { get; set; }
 
+        //Constructor
         public Studerende(string navn, int fødselsmåned, int fødselsdag)
         {
+            if (Fødselsmåned < 1 || Fødselsmåned > 12)
+            {
+                throw new ArgumentOutOfRangeException("Fødselsmåned skal være mellem 1 og 12");
+            }
             Navn = navn;
             Fødselsmåned = fødselsmåned;
             Fødselsdag = fødselsdag;
         }
 
-        public string BirthSeason(int fødselsmåned)
+        //Method to determine the season of the birth month
+        public string BirthSeason(int fødselsmåned) 
         {
+             
             if (Fødselsmåned == 12 || Fødselsmåned == 1 || Fødselsmåned == 2)
             {
                 return "Winter";
@@ -37,14 +45,28 @@ namespace ClassRoomNet60
             {
                 return "Autumn";
             }
-            else
-            {
-                return "Unknown";
-            }
+            return null;
+
+
         }
 
-         
+        //Method to check if the birth day is between 1 and 31
+        public Exception BirthDayException(int fødselsdag) 
+        {
+            if (Fødselsdag < 1 || Fødselsdag > 31)
+            {
+                throw new ArgumentOutOfRangeException("Fødselsdag skal være mellem 1 og 31");
+            }
+            return null;
+        }
+        //Method to check if the birth month is between 1 and 12
+        public Exception BirthMonthException(int fødselsmåned)
+        {
+       
+            return null;
+        }
 
-        
+
+
     }
 }

@@ -10,11 +10,19 @@ namespace ClassRoomNet60
             KlasseRum klasseRum = new KlasseRum();
             klasseRum.KlasseNavn = "3B";
             klasseRum.SemesterStart = new System.DateTime(2022,9,1);
-            klasseRum.KlasseListe.Add(new Studerende("Rebekka", 2, 14));
-            klasseRum.KlasseListe.Add(new Studerende("Cecilia", 3, 5));
-            klasseRum.KlasseListe.Add(new Studerende("Sara", 4, 20));
 
-          
+            try
+            {
+                klasseRum.KlasseListe.Add(new Studerende("Rebekka", 2, 14));
+                klasseRum.KlasseListe.Add(new Studerende("Cecilia", 3, 5));
+                klasseRum.KlasseListe.Add(new Studerende("Sara", 4, 20));
+                klasseRum.KlasseListe.Add(new Studerende("Mikkel", 13, 13));
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             //print out the information about the students in the class
             foreach (var student in klasseRum.KlasseListe)
@@ -22,6 +30,9 @@ namespace ClassRoomNet60
                 Console.WriteLine($"Navn: {student.Navn}, Fødselsdag: {student.Fødselsdag}, Fødselsmåned: {student.Fødselsmåned}, Årstid: {student.BirthSeason(student.Fødselsmåned)}");
             }
             klasseRum.CountBithSeasons();
+            Console.WriteLine();
+
+
         }
 
     }
