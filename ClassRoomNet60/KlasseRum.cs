@@ -18,5 +18,6 @@ namespace ClassRoomNet60
             KlasseListe = new List<Studerende>();
             SemesterStart = DateTime.Now;
         }
+
     }
 }
