@@ -13,13 +13,23 @@ namespace ClassRoomNet60
         public int Fødselsmåned { get; set; }
         public int Fødselsdag { get; set; }
 
+        public int fødselsmåned
+        {
+            get { return Fødselsmåned; }
+            set
+            {
+                if (value >= 1 && value <= 12)
+                    fødselsmåned = value;
+                else
+                    throw new ArgumentOutOfRangeException($"Fødselsmåned skal være mellem 1 og 12, du skrev {value}");
+
+
+            }
+        }
         //Constructor
         public Studerende(string navn, int fødselsmåned, int fødselsdag)
         {
-            if (Fødselsmåned < 1 || Fødselsmåned > 12)
-            {
-                throw new ArgumentOutOfRangeException("Fødselsmåned skal være mellem 1 og 12");
-            }
+            
             Navn = navn;
             Fødselsmåned = fødselsmåned;
             Fødselsdag = fødselsdag;
@@ -50,20 +60,9 @@ namespace ClassRoomNet60
 
         }
 
-        //Method to check if the birth day is between 1 and 31
-        public Exception BirthDayException(int fødselsdag) 
+        public override string ToString()
         {
-            if (Fødselsdag < 1 || Fødselsdag > 31)
-            {
-                throw new ArgumentOutOfRangeException("Fødselsdag skal være mellem 1 og 31");
-            }
-            return null;
-        }
-        //Method to check if the birth month is between 1 and 12
-        public Exception BirthMonthException(int fødselsmåned)
-        {
-       
-            return null;
+            return $"Navn: {Navn}, Fødselsdag: {Fødselsdag}, Fødselsmåned: {Fødselsmåned}, Årstid: {BirthSeason(Fødselsmåned)}";
         }
 
 
