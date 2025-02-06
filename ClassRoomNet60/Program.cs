@@ -21,6 +21,7 @@ namespace ClassRoomNet60
             {
                 Console.WriteLine($"Navn: {student.Navn}, Fødselsdag: {student.Fødselsdag}, Fødselsmåned: {student.Fødselsmåned}, Årstid: {student.BirthSeason(student.Fødselsmåned)}");
             }
+            klasseRum.CountBithSeasons();
         }
 
     }
