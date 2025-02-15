@@ -8,29 +8,18 @@ namespace ClassRoomNet60
 {
     public class Studerende
     {
-        //
+        //properties
         public string Navn { get; set; }
         public int Fødselsmåned { get; set; }
         public int Fødselsdag { get; set; }
 
-        public int fødselsmåned
-        {
-            get { return Fødselsmåned; }
-            set
-            {
-                if (value >= 1 && value <= 12)
-                    fødselsmåned = value;
-                else
-                    throw new ArgumentOutOfRangeException($"Fødselsmåned skal være mellem 1 og 12, du skrev {value}");
-
-
-            }
-        }
         //Constructor
         public Studerende(string navn, int fødselsmåned, int fødselsdag)
         {
             
             Navn = navn;
+            if(fødselsmåned <= 1 || fødselsmåned >= 12) //Check if the birth month is between 1 and 12
+                throw new ArgumentOutOfRangeException($"Fødselsmåned skal være mellem 1 og 12, du skrev {fødselsmåned}");
             Fødselsmåned = fødselsmåned;
             Fødselsdag = fødselsdag;
         }
@@ -51,13 +40,11 @@ namespace ClassRoomNet60
             {
                 return "Summer";
             }
-            else if (Fødselsmåned == 9 || Fødselsmåned == 10 || Fødselsmåned == 11)
+            else 
             {
                 return "Autumn";
             }
-            return null;
-
-
+  
         }
 
         public override string ToString()
